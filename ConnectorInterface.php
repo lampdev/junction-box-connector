@@ -21,18 +21,21 @@ interface ConnectorInterface
     /**
      * Send the request to the remote endpoint
      *
+     * @param string API endpoint to send the request to
+     * @param array parameters. If present, send POST reques, otherwise - GET
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function doRequest();
+    public function doRequest(string $endpoint, array $params);
 
     /**
      * Pull data out of the response from the endpoint
      *
+     * @param string the data to decode from JSON
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getData(): array;
+    public function getData($data);
 
     /**
      * Generate the response property map
